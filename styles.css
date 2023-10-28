@@ -1,0 +1,187 @@
+:root {
+    --background: rgba(31, 31, 31, 1);
+    --black: rgba(0, 0, 0, 1);
+    --white: rgba(255, 254, 254, 1);
+    --brown: rgba(111, 78, 55, 1);
+    --gray: rgba(127, 127, 127, 1);
+    --lightblue: rgb(110, 110, 255);
+    --blue: rgba(0, 0, 255, 1);
+    --blockSize: 70px;
+    --blockBorderSize: 2px;
+    --blockBorderColor: rgba(0, 0, 0, 0.5);
+    --blockColor: rgba(11, 149, 11, 1);
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--white);
+    background: var(--background);
+    padding: 0 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+#title {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    margin: 10px auto;
+}
+
+#screen{
+    display:flex;
+    border: 1px white solid;
+    max-width: 1200px;
+    width:100%;
+    margin: auto;
+}
+
+@media(width < 900px) {
+    #screen {
+        display: block;
+    }
+}
+
+#gameboard{
+    height: fit-content;
+    background-color: var(--brown);
+    max-width: 800px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+@media(width < 900px) {
+    #gameboard {
+        max-width: initial;
+    }
+}
+
+#info-panel{
+    max-width: 400px;
+    width: 100%;
+}
+
+@media(width < 900px) {
+    #info-panel {
+        max-width: initial;
+        margin: auto;
+        display: flex;
+    }
+
+    #info-panel > * {
+        width: 100%;
+    }
+}
+
+.tiles {
+    display: flex;
+}
+
+.tiles > div {
+    width: var(--blockSize);
+    height: var(--blockSize);
+    background-color: var(--blockColor);
+    border-top: var(--blockBorderSize) var(--blockBorderColor) solid;
+    border-left: var(--blockBorderSize) var(--blockBorderColor) solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiles > div:last-child {
+    border-right: var(--blockBorderSize) var(--blockBorderColor) solid;
+}
+
+.tiles:last-child > div {
+    border-bottom: var(--blockBorderSize) var(--blockBorderColor) solid;
+}
+
+.tiles > div.disc::before {
+    content: '';
+    width: calc(var(--blockSize) * 0.8);
+    height: calc(var(--blockSize) * 0.8);
+    display: block;
+    background-color: var(--gray);
+    border-radius: 50%;
+}
+
+div.disc.player1::before {
+    background-color: var(--lightblue);
+    border: 2px blue solid;
+}
+
+div.disc.player2::before {
+    background-color: var(--white);
+    border: 2px var(--black) solid;
+}
+
+.player {
+    background-color: var(--brown);
+    border: 1px var(--gray) solid;
+}
+
+#console {
+    background-color: var(--black);
+    padding: 10px;
+}
+
+#console.player1 {
+    color: var(--lightblue);
+}
+
+#console.player2 {
+    color: var(--white);
+}
+
+#console::before {
+    content: '>';
+    margin-right: 10px;
+}
+
+@media(width < 900px) {
+    #console {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.stats ul {
+    list-style: none;
+    left: -10px;
+    position: relative;
+}
+
+@media(width < 900px) {
+    .stats {
+        text-align: center;
+    }
+
+    .stats li {
+        margin-right: 20px;
+    }
+}
+
+.player.player1 {
+    background-color: var(--lightblue);
+    color: var(--black);
+}
+
+.player.player2 {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.validPlacement::before {
+    content: '';
+    width: calc(var(--blockSize) * 0.8);
+    height: calc(var(--blockSize) * 0.8);
+    display: block;
+    border: 5px var(--brown) solid;
+    border-radius: 50%;
+}
